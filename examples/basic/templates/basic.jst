@@ -1,0 +1,18 @@
+
+exports.DEBUG = function(msg) {
+    if (process.env.NODE_ENV === 'debug') {
+        console.log(${msg});
+    }
+};
+
+exports.EXISTS = function(x) {
+    ${x} !== null && ${x} !== undefined
+};
+
+exports.LOG_EXISTS = function(y) {
+    if (@EXISTS(${y})) {
+        console.log("Yes, " + ${y} + " does exist");
+    } else {
+        console.log("No, " + ${y} + " does not exist");
+    }
+};

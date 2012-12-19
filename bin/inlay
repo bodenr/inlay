@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    inlay = require('..'),
+    version = require('../package.json').version,
+    src,
+    templates;
+
+function optSrc(val) {
+    if (!src) {
+        src = [];
+    }
+    src.push(val);
+};
+
+function optOutput(val) {
+    inlay.option('out', val);
+}
+
+function optTemplate(val) {
+    if (!templates) {
+        templates = [];
+    }
+    templates.push(val);
+}
+
+function optValidate(val) {
+    inlay.option('validate', val);
+}
+
+function optBeautify(val) {
+    inlay.option('beautify', JSON.parse(val));
+}
+
+
+program
+    .version(version)
+    .option('-s, --source <path>', 'source path to process [./src]', optSrc)
+    .option('-o, --output <path>', 'output path [./lib]', optOutput)
+    .option('-t, --templates <path>', 'template path [./templates]', optTemplate)
+    .option('-v, --validate <on>', 'validate templates and source [true]', optValidate)
+    .option('-b, --beautify <options>', 'js-beautify code with options [{}]', optBeautify)
+    .option('-d, --debug [on]', 'debug verbose output [false]')
+    .parse(process.argv);
+
+if (program.debug) {
+    inlay.option('debug', true);
+}
+
+if (templates) {
+    inlay.option('templates', templates);
+}
+if (src) {
+    inlay.option('src', src);
+}
+ 
+inlay.process();
+
+ 

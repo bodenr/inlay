@@ -1,0 +1,32 @@
+{
+    "name": "inlay",
+    "version": "0.0.1",
+    "description": "JavaScript source code templating system",
+    "keywords": [
+        "utilities",
+        "template",
+        "source",
+        "framework",
+        "build",
+        "tools"
+    ],
+    "private": false,
+    "author": "Boden Russell <bodensemail@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/bodenr/inlay.git"
+    },
+    "main": "index",
+    "engines": {
+        "node": "*"
+    },
+    "bin": {
+        "inlay": "./bin/inlay"
+    },
+    "dependencies": {
+        "commander": "*",
+        "errors": "*",
+        "js-beautify": "*"
+    },
+    "license": "MIT"
+}
