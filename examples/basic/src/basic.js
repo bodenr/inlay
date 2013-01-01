@@ -10,4 +10,4 @@ var user = process.env.USER;
 
 @DEBUG("Exit basic sample...");
 
-@FOR(10, 'if (i %2) {mod++;}');
+@FOR(10, 'if (i %2 === 0) {console.log("mod 2");}');
