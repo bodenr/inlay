@@ -9,10 +9,34 @@ exports.EXISTS = function(x) {
     ${x} !== null && ${x} !== undefined
 };
 
+exports.FOR = function(length, fn) {
+    for (var i = 0; i < ${length}; i++) {
+        $$UNQUOTE(${fn})
+    }
+};
+
 exports.LOG_EXISTS = function(y) {
     if (@EXISTS(${y})) {
         console.log("Yes, " + ${y} + " does exist");
     } else {
         console.log("No, " + ${y} + " does not exist");
     }
+};
+
+exports.macros = {};
+
+exports.macros.UNQUOTE = function(s) {
+    var start = 0, end = s.length;
+    s = s.trim();
+    if (s.charAt(0) === '\'') {
+        start = 1;
+    }
+    if (s.charAt(end - 1) === '\'') {
+        end -= 1;
+    }
+    return s.substring(start, end);
+};
+
+exports.macros.DATE = function() {
+    return new Date().toString();
 };

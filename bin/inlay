@@ -32,6 +32,13 @@ function optBeautify(val) {
     inlay.option('beautify', JSON.parse(val));
 }
 
+function optToken(val) {
+    inlay.option('token', val);
+}
+
+function optMacro(val) {
+    inlay.option('macro', val);
+}
 
 program
     .version(version)
@@ -40,6 +47,8 @@ program
     .option('-t, --templates <path>', 'template path [./templates]', optTemplate)
     .option('-v, --validate <on>', 'validate templates and source [true]', optValidate)
     .option('-b, --beautify <options>', 'js-beautify code with options [{}]', optBeautify)
+    .option('-i, --invoke <token>', 'template invocation token [@]', optToken)
+    .option('-m, --macro <token>', 'macro invocation token [$$]', optMacro)
     .option('-d, --debug [on]', 'debug verbose output [false]')
     .parse(process.argv);
 
