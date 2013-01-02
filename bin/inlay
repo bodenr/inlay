@@ -33,7 +33,7 @@ function optBeautify(val) {
 }
 
 function optToken(val) {
-    inlay.option('token', val);
+    inlay.option('invoke', val);
 }
 
 function optMacro(val) {
